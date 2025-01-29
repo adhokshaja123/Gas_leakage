@@ -13,3 +13,14 @@ void setup()
   //pinMode(gas, INPUT);
   Serial.begin(9600);
 }
+
+void loop()
+{
+  int valor = analogRead(gas);
+  valor = map(valor,300,750,0,100);
+  digitalWrite(green,HIGH);
+  digitalWrite(blue,valor>=10 ? HIGH : LOW);
+  digitalWrite(orange, valor >= 30 ? HIGH : LOW);
+  digitalWrite(red, valor >= 50 ? HIGH : LOW);
+  delay(250);
+}
